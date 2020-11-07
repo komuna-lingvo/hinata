@@ -1,0 +1,35 @@
+<div class="flex-1 h-full flex flex-col">
+  <app-header>Choose your store</app-header>
+
+  <ng-container *ngIf="showGoogleMaps; else isOffline">
+    <agm-map class="bg-gray-400 h-full relative flex-1" (mapReady)="onMapReady()" [latitude]="options.latitude"
+      [longitude]="options.longitude" [zoom]="options.zoom" [minZoom]="options.zoom - 2" [maxZoom]="options.zoom + 2"
+      [disableDefaultUI]="true">
+      <ng-container *ngFor="let marker of markers; index as idx">
+        <agm-marker (markerClick)="onMarkerClick(idx)" [latitude]="marker.latitude" [longitude]="marker.longitude"
+          [iconUrl]="{url: './assets/store-icon.svg', scaleSize: {width: 48, height: 48}}">
+        </agm-marker>
+      </ng-container>
+    </agm-map>
+  </ng-container>
+</div>
+
+<app-dialog [open]="showDialog" (close)="showDialog = false;">
+  <app-dialog-body>
+    <div class="flex flex-col items-center text-indigo-600" *ngIf="selectedStore && selectedStore !== null">
+      <strong class="text-xl">{{selectedStore.name}}</strong>
+      <img class="mb-4 w-32 h-32" loading="lazy" src="./assets/store.svg" [alt]="selectedStore.address">
+      <p class="text-indigo-600">
+        <strong class="mr-2">Address</strong>
+        <span>{{selectedStore.address}}</span>
+      </p>
+      <app-button (click)="onChooseStoreClick()">Here</app-button>
+      <app-button [secondary]="true" (click)="showDialog = false">Choose other</app-button>
+    </div>
+  </app-dialog-body>
+</app-dialog>
+
+
+<ng-template #isOffline>
+  TODO
+</ng-template>

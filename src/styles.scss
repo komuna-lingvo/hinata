@@ -1,1 +1,26 @@
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 /* You can add global styles to this file, and also import other style files */
+
+body:before {
+  content: '';
+  @apply absolute;
+  @apply top-0;
+  @apply left-0;
+  @apply right-0;
+  @apply h-32;
+  @apply bg-indigo-600;
+}
+
+agm-map {
+  .agm-map-container-inner {
+    @apply absolute;
+    @apply top-0;
+    @apply right-0;
+    @apply left-0;
+    @apply bottom-0;
+  }
+}
+

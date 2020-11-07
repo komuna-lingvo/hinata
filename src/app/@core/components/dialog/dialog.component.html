@@ -1,0 +1,5 @@
+<div *ngIf="open" class="px-8 flex items-center justify-center absolute top-0 right-0 bottom-0 left-0">
+  <div *ngIf="hasBackdrop" (click)="toggleDialog(false)"
+    class="z-0 absolute top-0 right-0 bottom-0 left-0 bg-gray-800 bg-opacity-50"></div>
+  <ng-content></ng-content>
+</div>
