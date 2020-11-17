@@ -1,6 +1,9 @@
 @agm/core
 MIT
 
+@angular/animations
+MIT
+
 @angular/common
 MIT
 
